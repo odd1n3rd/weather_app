@@ -9,6 +9,7 @@ from aiogram.types import Message
 from config import TOKEN
 from handlers import router
 
+
 bot = Bot(token = TOKEN)
 dp = Dispatcher()
 
