@@ -10,16 +10,16 @@ def get_lat_lon(city):
 def getweather (city):
     try:
         lat_lon = get_lat_lon(city)
-        info = requests.get(f'http://api.openweathermap.org/data/3.0/onecall?lat={lat_lon['lat']}&lon={lat_lon['lon']}&appid={wthr_token}')
-        return info     
+        info = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat_lon['lat']}&lon={lat_lon['lon']}&appid={wthr_token}&lang=RU&units=metric')
+        jsonfo = info.json()
+        res= [jsonfo['weather'][0]['description'], #погода
+               jsonfo['main']['temp']] #температура
+        return res   
     except:
         print("ты кого наебать пытаешься")
 
 #print(get_lat_lon(input('пиши: ')))
-print(getweather(input('пиши2: ')))
-
-
-
+#print(getweather(input('пиши2: ')))
 
 # with open("data.json", "w", encoding="UTF-8") as file_out:
-#     json.dump(get_lat_lon('уварово'), file_out, ensure_ascii=False, indent=2)
+#     json.dump(getweather('одинцово'), file_out, ensure_ascii=False, indent=2)
