@@ -7,7 +7,7 @@ from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
 #чобы именно мой бот работало
 from config import TOKEN
-from handlers import rtr
+from handlers import router
 
 bot = Bot(token = TOKEN)
 dp = Dispatcher()
@@ -15,7 +15,7 @@ dp = Dispatcher()
 
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
-    dp.include_router(rtr)
+    dp.include_router(router)
     await dp.start_polling(bot)
 
 
